@@ -52,7 +52,7 @@
           </i>
         </div>
         <div class="content">
-          <div class="article" v-for="i in 10" :key='i'>
+          <div class="article" v-for="i in 20" :key='i'>
             <div class="top">
               <div class="date">
                 <p>
@@ -64,10 +64,10 @@
               </div>
               <div class="watchCount">
                 <p>
-                  0
+                  觀看數：
                 </p>
                 <p>
-                  觀看數：
+                  0
                 </p>
               </div>
             </div>
@@ -99,6 +99,9 @@ export default {
     align-items: center;
     justify-content: center;
 }
+*{
+  user-select: none;
+}
 .bg{
   width: 100vw;
   height: 140vh;
@@ -114,26 +117,25 @@ export default {
     height: 100%;
     .hotArticle{
       width: 64%;
-      height: 48%;
+      height: 40%;
       margin-left: 18%;
-      margin-right: 18%;
       margin-top: 2%;
       float: left;
       .header{
         height: 4%;
-        padding: 2%;
         font-size: 24px;
         display: flex;
         align-items: center;
         font-weight: bold;
         color: rgb(255, 127, 68);
+        padding-top: 2%;
         padding-left: 6%;
       }
       .content{
-        height: 84%;
+        height: 90%;
         .article{
           width: 40%;
-          height: 40%;
+          height: 44%;
           border: 1px solid rgb(194, 194, 194);
           border-radius: 8px;
           background-color: rgba(255, 255, 255, .4);
@@ -145,10 +147,9 @@ export default {
           .top{
             border-bottom: 1px solid rgb(190, 190, 190);
             height: 20%;
-            font-size: 18px;
             @include customCenter();
             .article_title{
-              font-size: 24px;
+              font-size: 20px;
               padding: 1.4%;
               padding-left: 4%;
               font-weight: bold;
@@ -191,33 +192,33 @@ export default {
       }
     }
     .newAirticle{
-      width: 64%;
+      width: 56%;
       height: 48%;
       margin-top: 2%;
-      margin-left: 18%;
-      margin-right: 18%;
+      margin-left: 22%;
       float: left;
-      overflow: scroll;
-      -ms-overflow-style: none; //隱藏滾動條 For IE10+
-      overflow: -moz-scrollbars-none; //隱藏滾動條 For Firefox
       .header{
         height: 4%;
-        padding: 2%;
         font-size: 24px;
         display: flex;
         align-items: center;
         font-weight: bold;
         color: rgb(44, 77, 167);
-        padding-left: 6%;
+        margin-bottom: 4%;
       }
       .content{
         height: 90%;
+        overflow: scroll;
+        overflow-x: hidden;
+        -ms-overflow-style: none; //隱藏滾動條 For IE10+
+        overflow: -moz-scrollbars-none; //隱藏滾動條 For Firefox
         .article{
           height: 12%;
-          margin-top: 1.8%;
+          margin-top: 2.8%;
           border: 1px solid rgb(190, 190, 190);
           background-color: rgba(255, 255, 255, .4);
           border-radius: 8px;
+          cursor: pointer;
           transition-duration: .2s;
           .top{
             border-bottom: 1px solid rgb(190, 190, 190);
@@ -237,12 +238,12 @@ export default {
               }
             }
             .watchCount{
-              width: 49.2%;
+              width: 48%;
               height: 100%;
               float: left;
-              p{
-                float: right;
-              }
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
             }
           }
           .bottom{
@@ -262,9 +263,8 @@ export default {
           transform: scaleX(0.9);
         }
       }
+      .content::-webkit-scrollbar { width: 0 !important } //隱藏滾動條 For chrome、Safari
     } // newArticle
-    .newAirticle::-webkit-scrollbar { width: 0 !important } //隱藏滾動條 For chrome、Safari
-
   }
   .right{
     float: left;

@@ -3,14 +3,14 @@
         <div class="left pc-2">
             <h3>
                 <i>
-                    Blog
+                    <router-link class="link" to="/">Blog</router-link>
                 </i>
             </h3>
         </div>
         <div class="middle pc-6">
             <label for="searchArticle">
                 <input type="text" id="searchArticle" size="20" placeholder="輸入欲搜尋的文章">
-                <button>搜尋文章</button>
+                <button @click="click">搜尋文章</button>
             </label>
         </div>
         <div class="right pc-2">
@@ -26,7 +26,17 @@
 
 <script>
 export default {
-    
+    methods: {
+        click(){
+            this.axios.post('/test', {
+                value: '1'
+            }).then((res) => {
+                console.log(res);
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+    }
 }
 </script>
 
@@ -36,6 +46,9 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+*{
+    user-select: none;
 }
 .bg{
     width: 100%;
@@ -50,6 +63,11 @@ export default {
         @include customCenter();
         h3{
             margin-top: 2%;
+            cursor: pointer;
+            .link{
+                text-decoration: none;
+                color: #256fb9;
+            }
         }
     }
     .middle{
