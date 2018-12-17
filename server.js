@@ -1,15 +1,11 @@
-var Vue = require('vue');
 var express = require('express');
-var axios = require('axios');
 
 var app = express();
 
-Vue.use(axios);
+app.use(express.static(__dirname));
 
-axios.post('/test', (req, res) => {
+app.post('/test', (req, res) => {
     console.log(req);
-}).catch((err) => {
-    console.log(err);
 })
 
 app.listen(8080, () => {

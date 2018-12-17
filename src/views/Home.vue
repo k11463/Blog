@@ -106,7 +106,6 @@ export default {
   width: 100vw;
   height: 140vh;
   border: 1px solid #000;
-  background-color: #ebf6ff;
   padding-top: 56px;
   .left{
     float: left;
@@ -115,6 +114,7 @@ export default {
   .middle{
     float: left;
     height: 100%;
+    background-color: #ebf6ff;
     .hotArticle{
       width: 64%;
       height: 40%;
@@ -138,7 +138,7 @@ export default {
           height: 44%;
           border: 1px solid rgb(194, 194, 194);
           border-radius: 8px;
-          background-color: rgba(255, 255, 255, .4);
+          background-color: white;
           float: left;
           cursor: pointer;
           margin-left: 6.4%;
@@ -150,6 +150,9 @@ export default {
             @include customCenter();
             .article_title{
               font-size: 20px;
+              height: 100%;
+              display: flex;
+              align-items: center;
               padding: 1.4%;
               padding-left: 4%;
               font-weight: bold;
@@ -216,7 +219,7 @@ export default {
           height: 12%;
           margin-top: 2.8%;
           border: 1px solid rgb(190, 190, 190);
-          background-color: rgba(255, 255, 255, .4);
+          background-color: white;
           border-radius: 8px;
           cursor: pointer;
           transition-duration: .2s;

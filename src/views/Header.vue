@@ -15,10 +15,10 @@
         </div>
         <div class="right pc-2">
             <div class="smallBtn">
-                個人頁面
+               <router-link to="/" class="link"> 個人頁面</router-link>
             </div>
             <div class="smallBtn">
-                登入
+                <router-link to="/login" class="link">登入</router-link>
             </div>
         </div>
     </div>
@@ -119,10 +119,13 @@ export default {
             border-bottom: 1px solid #b9ddff;
             font-size: 20px;
             padding: 8px 16px 8px 16px;
-            color: white;
             transition-duration: .8s;
             border-radius: 4px;
             margin-right: 4%;
+            .link{
+                color: white;
+                text-decoration: none;
+            }
         }
         .smallBtn:hover{
             background-color: #b9ddff;
