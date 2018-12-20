@@ -16,9 +16,9 @@
                         </label>
                     </div>
                     <div class="col">
-                        <label for="account">
+                        <label for="password">
                             會員密碼
-                            <input type="password" id="account" size="20" placeholder="請輸入帳號">
+                            <input type="password" id="password" size="20" placeholder="請輸入帳號">
                         </label>
                     </div>
                     <div class="col">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="register">
                             <p>尚未註冊會員?</p>
-                            <p><router-link to="/" class="link">點我註冊</router-link></p>
+                            <p><router-link to="/register" class="link">點我註冊</router-link></p>
                         </div>
                     </div>
                 </div>
