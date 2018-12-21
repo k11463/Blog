@@ -17,6 +17,9 @@
                             <div class="right">
                                 <input type="text" id="account" size="20" placeholder="請輸入帳號" v-model="datas.account">
                             </div>
+                            <div class="error">
+                                {{errors.accountError}}
+                            </div>
                         </label>
                     </div>
                     <div class="col">
@@ -27,6 +30,9 @@
                             <div class="right">
                                 <input type="password" id="password" size="20" placeholder="請輸入密碼" v-model="datas.password">
                             </div>
+                            <div class="error">
+                                {{errors.passwordError}}
+                            </div>
                         </label>
                     </div>
                     <div class="col">
@@ -35,7 +41,10 @@
                                 會員密碼確認
                             </div>
                             <div class="right">
-                                <input type="password" id="confirm_password" size="20" placeholder="請確認密碼" v-model="datas.confirm_password">
+                                <input type="password" id="confirm_password" size="20" placeholder="請確認密碼" v-model="datas.confirmPassword">
+                            </div>
+                            <div class="error">
+                                {{errors.confirmPasswordError}}
                             </div>
                         </label>
                     </div>
@@ -72,14 +81,85 @@ export default {
             datas: {
                 account: '',
                 password: '',
-                confirm_password: '',
+                confirmPassword: '',
                 email: ''
+            },
+            errors: {
+                accountError: '',
+                passwordError: '',
+                confirmPasswordError: '',
+                emailError: ''
             }
         }
     },
     methods: {
         click(){
             
+        }
+    },
+    computed: {
+        errorMsg(){
+
+            var error = [];
+
+            var data = this.datas;
+
+            for (var val in data){
+                if (data[val] == ''){
+                    error.push({
+                        val: val,
+                        msg: '欄位不可為空'
+                    });
+                }
+                else{
+                    switch(val){
+                        case 'account':
+                            error.push({
+                                val: val,
+                                msg: ''
+                            });
+                            break;
+                        case 'password':
+                            if (data.password.length < 8){
+                                error.push({
+                                    val: val,
+                                    msg: '密碼不安全'
+                                });
+                            }
+                            else if (data.password.length > 15){
+                                error.push({
+                                    val: val,
+                                    msg: '密碼不可大於15字元'
+                                });
+                            }
+                            break;
+                        case 'confirmPassword':
+                            break;
+                    }
+                }
+            }
+
+            return error;
+        }
+    },
+    watch: {
+        errorMsg(err){
+            for (var i in err){
+                //console.log(err[i].val);
+                switch(err[i].val){
+                    case 'account':
+                        this.errors.accountError = err[i].msg;
+                        break;
+                    case 'password':
+                        this.errors.passwordError = err[i].msg;
+                        break;
+                    case 'confirmPassword':
+                        this.errors.confirmPasswordError = err[i].msg;
+                        break;
+                    case 'email':
+                        break;
+                }
+            }
         }
     }
 }
@@ -159,6 +239,11 @@ export default {
                                 color: white;
                             }
                         } // right
+                        .error{
+                            position: absolute;
+                            margin-top: 2%;
+                            color: red;
+                        }
                     } // label
                     .btn{
                         width: 16%;
